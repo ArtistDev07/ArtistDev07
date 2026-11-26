@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif-editorial: "Playfair Display", Georgia, serif;
+  --font-sans-bento: "Plus Jakarta Sans", "Inter Tight", system-ui, sans-serif;
+  --font-mono-bento: "JetBrains Mono", "IBM Plex Mono", monospace;
+}
+
+.bento-dot-canvas {
+  background-color: #09090B;
+  background-image: radial-gradient(rgba(244, 241, 234, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bento-card-surface {
+  --spotlight-x: 50%;
+  --spotlight-y: 50%;
+}
+
+.bento-card-spotlight {
+  padding: 1px;
+  background: radial-gradient(
+    280px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+    rgba(242, 86, 35, 0.9),
+    rgba(244, 241, 234, 0.35) 35%,
+    transparent 70%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
