@@ -183,6 +183,7 @@ body.no-webgl .stage{background:radial-gradient(circle at 50% 40%,#1c1c20 0%,#0a
 .founder-block-tag{font:400 10.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.08em;color:var(--mid);text-transform:uppercase;margin-bottom:.6vh;display:block}
 .about-bio p{font:400 clamp(14px,1.15vw,17px)/1.65 'Inter Tight',system-ui,sans-serif;color:#d5d2cb;margin:0}
 .about-bio strong{color:var(--ink);font-weight:600}
+.brand-ai-red{color:#FF0000}
 
 /* About Route: AIVERSEUI Narrative Architecture */
 .aiverseui-sec{margin-top:11vh;padding-top:2vh}
@@ -534,7 +535,6 @@ body.fixed-nav-visible .subpage-topbar{top:74px}
 .studio-frame:hover{border-color:var(--ink)}
 .studio-frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.16,1,.3,1)}
 .studio-frame:hover img{transform:scale(1.05)}
-.studio-index-tag{position:absolute;top:0;left:0;padding:5px 9px;background:rgba(10,10,11,.84);color:var(--ink);border-right:1px solid var(--line);border-bottom:1px solid var(--line);font:400 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;z-index:2}
 
 /* Sub-Page 03: Editorial (5 Decks + 3 Inline Blogs) */
 .editorial-decks-section{padding:6vh 4vw 8vh}
@@ -580,6 +580,7 @@ body.fixed-nav-visible .subpage-topbar{top:74px}
 .cert-card:focus-visible{outline:2px solid var(--ink);outline-offset:6px;opacity:1;transform:translateY(0) rotateX(0deg) scale(1)}
 .cert-card.is-revealed{opacity:1;transform:translateY(0) rotateX(0deg) scale(1)}
 .cert-frame{width:100%;aspect-ratio:16/11;background:#121214;border:1px solid var(--line);border-radius:0;position:relative;overflow:hidden;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.16,1,.3,1),border-color .4s ease,box-shadow .4s ease;will-change:transform}
+.cert-frame.is-portrait{aspect-ratio:3/4}
 .cert-frame:hover,.cert-card:hover .cert-frame,.cert-card:focus-visible .cert-frame{border-color:var(--ink);box-shadow:0 16px 36px rgba(0,0,0,.45)}
 .cert-plus-mark{position:absolute;inset:0;display:grid;place-items:center;font:400 18px 'IBM Plex Mono',monospace;color:var(--ink);opacity:0.12;pointer-events:none;user-select:none;transition:opacity .25s ease;z-index:1}
 .cert-frame.has-image .cert-plus-mark{opacity:0}
@@ -588,7 +589,7 @@ body.fixed-nav-visible .subpage-topbar{top:74px}
 .cert-card:hover .cert-spotlight,.cert-card:focus-visible .cert-spotlight{opacity:1}
 .cert-caption{padding-top:1.4vh}
 .cert-name{font-family:"Inter Tight",system-ui,sans-serif;font-weight:500;font-size:15px;color:var(--ink);line-height:1.3}
-.cert-id{font-family:"IBM Plex Mono",monospace;font-weight:400;font-size:11px;color:var(--mid);letter-spacing:0.06em;margin-top:0.4vh}
+.cert-id{font-family:"IBM Plex Mono",monospace;font-weight:400;font-size:11px;color:var(--mid);letter-spacing:0.06em;margin-top:0.4vh;overflow-wrap:anywhere}
 @media (max-width:1024px){
   .cert-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
@@ -2327,7 +2328,7 @@ function getCommunityPartnersHtml() {
     >
       <div class="partner-top-section">
         <div class="partner-vertical-text">
-          <span class="partner-name">${item.name}</span>
+          <span class="partner-name">${item.name === 'Aiverseui' ? '<span class="brand-ai-red">Ai</span>verseui' : item.name}</span>
           <span class="partner-meta">${item.role}</span>
           <span class="partner-year">${item.year}</span>
         </div>
@@ -2648,21 +2649,21 @@ const SYSTEMS_PROJECTS = [
     num: '05',
     title: '05. Kofee Vintage Coffee Studio',
     tags: ['LENIS', 'TYPESCRIPT', 'SHADERS', 'VERCEL'],
-    image: 'https://i.pinimg.com/736x/15/63/be/1563bec75f9503fda9661df1ab0d2134.jpg',
+    image: 'https://i.pinimg.com/1200x/c4/82/02/c48202aff99e7a6cffc334be779781e0.jpg',
     fallback: EXTENSION_ASSETS.artistryAaram
   },
   {
     num: '06',
     title: '06. Fieldline Enterprise',
     tags: ['REACT', 'GRAPHQL', 'DOCKER', 'POSTGRESQL'],
-    image: 'https://i.pinimg.com/736x/23/da/21/23da216833f094eef050b0117b5931bd.jpg',
+    image: 'https://i.pinimg.com/736x/f1/19/8e/f1198e943c903d3665ebfcab081adc8e.jpg',
     fallback: EXTENSION_ASSETS.processSketch
   },
   {
     num: '07',
     title: '07. StudyBuddy AI',
     tags: ['PYTHON', 'FASTAPI', 'RAG', 'VECTOR DB'],
-    image: 'https://i.pinimg.com/1200x/10/ff/f3/10fff3d7a60635465dae82aedc84a12c.jpg',
+    image: 'https://i.pinimg.com/736x/49/2c/ad/492cad8ab2019155bf6c57d6fef69bb5.jpg',
     fallback: EXTENSION_ASSETS.processTerminal
   },
   {
@@ -2676,28 +2677,28 @@ const SYSTEMS_PROJECTS = [
     num: '09',
     title: '09. VerifiAI',
     tags: ['PYTORCH', 'FASTAPI', 'TYPESCRIPT', 'DOCKER'],
-    image: 'https://i.pinimg.com/1200x/5c/24/b8/5c24b8f542f53836579d878a233187be.jpg',
+    image: 'https://i.pinimg.com/1200x/ad/41/c6/ad41c6373813789873bce2c0f55dd5a2.jpg',
     fallback: EXTENSION_ASSETS.processShader
   },
   {
     num: '10',
     title: '10. SHEGO Mobility',
     tags: ['REACT NATIVE', 'POSTGIS', 'MAPS API', 'NODE'],
-    image: 'https://i.pinimg.com/736x/7e/5d/dd/7e5ddd778771cef17139a7ef58ac88dd.jpg',
+    image: 'https://i.pinimg.com/1200x/56/93/d3/5693d3066b57d0d084d99936ada22d8b.jpg',
     fallback: EXTENSION_ASSETS.artistryHipHop
   },
   {
     num: '11',
     title: '11. FinSight',
     tags: ['NEXT.JS', 'D3.JS', 'POSTGRESQL', 'GEMINI'],
-    image: 'https://i.pinimg.com/1200x/5e/43/51/5e4351777fb86ea60c4e5bacd63fdffc.jpg',
+    image: 'https://i.pinimg.com/736x/4d/98/93/4d989319d33f6eeb5e840e2458293053.jpg',
     fallback: EXTENSION_ASSETS.artistryKaalvansh
   },
   {
     num: '12',
     title: '12. Cooperative Gig Platform',
     tags: ['TYPESCRIPT', 'NODE', 'STRIPE', 'VERCEL'],
-    image: 'https://i.pinimg.com/1200x/9c/c3/f0/9cc3f074112ff4af85061df6146c9c41.jpg',
+    image: 'https://i.pinimg.com/736x/fa/2b/78/fa2b780caae797d1601014e547dac5dd.jpg',
     fallback: EXTENSION_ASSETS.processSketch
   }
 ];
@@ -2713,6 +2714,7 @@ function renderWorkSystems() {
             alt="${p.title}"
             loading="lazy"
             decoding="async"
+            referrerpolicy="no-referrer"
             onerror="this.onerror=null;this.src='${p.fallback}';"
           />
         </div>
@@ -2748,18 +2750,56 @@ function renderWorkSystems() {
 }
 
 const STUDIO_IMAGES = [
-  'https://i.pinimg.com/736x/15/63/be/1563bec75f9503fda9661df1ab0d2134.jpg',
-  'https://i.pinimg.com/736x/23/da/21/23da216833f094eef050b0117b5931bd.jpg',
-  'https://i.pinimg.com/1200x/10/ff/f3/10fff3d7a60635465dae82aedc84a12c.jpg',
-  'https://i.pinimg.com/736x/04/8e/0b/048e0b835a8c4ca6809611d15a4f49c6.jpg',
-  'https://i.pinimg.com/1200x/5c/24/b8/5c24b8f542f53836579d878a233187be.jpg',
-  'https://i.pinimg.com/736x/7e/5d/dd/7e5ddd778771cef17139a7ef58ac88dd.jpg',
-  'https://i.pinimg.com/1200x/5e/43/51/5e4351777fb86ea60c4e5bacd63fdffc.jpg',
-  'https://i.pinimg.com/1200x/9c/c3/f0/9cc3f074112ff4af85061df6146c9c41.jpg',
-  'https://i.pinimg.com/736x/8a/2e/fa/8a2efa90c30b42de90da228b7c5d2641.jpg',
-  'https://i.pinimg.com/736x/80/f6/53/80f653a7ae7b5a62d8b21d67c6872bff.jpg',
-  'https://i.pinimg.com/736x/3a/0e/e5/3a0ee59a1f2bf5a56da908c8d03bdd72.jpg',
-  'https://i.pinimg.com/736x/04/19/f7/0419f78f0a95124ddd6236427385f72e.jpg'
+  "https://i.pinimg.com/1200x/70/f7/5e/70f75e6f0d35c2ebeba3eca9c31a80c5.jpg",
+  "https://i.pinimg.com/736x/81/62/62/8162628b0e87087cb852b2111ab74485.jpg",
+  "https://i.pinimg.com/1200x/b1/ca/8a/b1ca8a16c7a987f04d325f754081d77c.jpg",
+  "https://i.pinimg.com/1200x/c7/0c/a4/c70ca4fca165e187c4b5d969e9680c09.jpg",
+  "https://i.pinimg.com/1200x/44/71/3c/44713cb68a988d89f9b585d1d77adf2b.jpg",
+  "https://i.pinimg.com/736x/43/b9/e1/43b9e1d1ba15ea7152030daee591a6df.jpg",
+  "https://i.pinimg.com/736x/8f/b6/47/8fb6472218bb9bf259c633561f997b38.jpg",
+  "https://i.pinimg.com/736x/30/a7/c5/30a7c5fc35f82c39a5e411baaf008d6c.jpg",
+  "https://i.pinimg.com/736x/b9/cd/64/b9cd643cabd7358d98e03bcf5332043f.jpg",
+  "https://i.pinimg.com/736x/6f/a9/ba/6fa9ba39ade38394d15e410fca1b819a.jpg",
+  "https://i.pinimg.com/736x/cf/51/34/cf513410c174c0df47041a0926c5a7d8.jpg",
+  "https://i.pinimg.com/1200x/49/af/c4/49afc4697311cfe9606ae3111237812a.jpg",
+  "https://i.pinimg.com/1200x/75/ff/7e/75ff7e5ca5acbf198b72702bed548d7e.jpg",
+  "https://i.pinimg.com/1200x/fa/a1/1d/faa11d4495347cbd6d90bbd17d6ef7c5.jpg",
+  "https://i.pinimg.com/1200x/eb/97/40/eb97408a546383bb903eeaac9f8d3650.jpg",
+  "https://i.pinimg.com/736x/9d/b4/f2/9db4f28fd12f642f2cd29659c26165cd.jpg",
+  "https://i.pinimg.com/736x/39/13/d3/3913d3f324a76e17faa47379e7e445d4.jpg",
+  "https://i.pinimg.com/736x/9d/53/01/9d5301f3444b0ca8a487991aae7427cb.jpg",
+  "https://i.pinimg.com/1200x/23/8b/2c/238b2cec42fbe7bacfe297c53bd63324.jpg",
+  "https://i.pinimg.com/736x/28/7e/09/287e09b432babde16a0af99a8c10929c.jpg",
+  "https://i.pinimg.com/736x/6d/63/b1/6d63b14033f77e2a405ebc3baa919035.jpg",
+  "https://i.pinimg.com/1200x/78/e9/f3/78e9f37fb0e6d9f6d0c2c956a55b07d1.jpg",
+  "https://i.pinimg.com/736x/f3/0f/2f/f30f2f9a6e1c0721e454de4875ef4668.jpg",
+  "https://i.pinimg.com/736x/28/08/bd/2808bdb251440239b698249a9fbb4184.jpg",
+  "https://i.pinimg.com/736x/53/43/d5/5343d58623451ef0f351af3a640bb256.jpg",
+  "https://i.pinimg.com/1200x/42/33/d3/4233d3b342ee6095ce075cd1b29d5ad4.jpg",
+  "https://i.pinimg.com/1200x/cc/38/bd/cc38bd72c070f7375776881758700760.jpg",
+  "https://i.pinimg.com/736x/a5/11/de/a511de5be303e807c622d212db24f900.jpg",
+  "https://i.pinimg.com/736x/bb/69/23/bb69234a5f7a064569d89ed30c41b6fe.jpg",
+  "https://i.pinimg.com/736x/ae/1e/01/ae1e015df42742dbf01bcfc5bfb95d73.jpg",
+  "https://i.pinimg.com/736x/0f/76/1c/0f761c99592f79579f8d72c1d679fbf1.jpg",
+  "https://i.pinimg.com/736x/ff/d4/b7/ffd4b7cee3aa1ff8629572ba0216b861.jpg",
+  "https://i.pinimg.com/736x/37/3d/e7/373de7d4b568195452b9377e075aea9e.jpg",
+  "https://i.pinimg.com/1200x/28/a0/3c/28a03c1899d866a7f81a0651a3cbae35.jpg",
+  "https://i.pinimg.com/736x/8c/44/1c/8c441cc760c75d750d536fa5646d4514.jpg",
+  "https://i.pinimg.com/1200x/11/f3/31/11f331c8fa18c7914d761f37cb6614d0.jpg",
+  "https://i.pinimg.com/736x/f6/f3/4c/f6f34cea45e3109d6edbcf99620a9866.jpg",
+  "https://i.pinimg.com/736x/a2/c0/d2/a2c0d2512e83f247a4c9f339178b7bfd.jpg",
+  "https://i.pinimg.com/736x/ed/6e/79/ed6e7942b198ca4ef238d0818c913535.jpg",
+  "https://i.pinimg.com/736x/55/09/8d/55098d914eded45e6c9e5b46490ee859.jpg",
+  "https://i.pinimg.com/736x/70/f2/cf/70f2cf1f86bc0a8dd86a76b7dcffa358.jpg",
+  "https://i.pinimg.com/1200x/45/0c/08/450c08fa895c7083d8d00227212d6a8a.jpg",
+  "https://i.pinimg.com/736x/f7/11/aa/f711aa1c9ab397b905dffa1092211bab.jpg",
+  "https://i.pinimg.com/736x/50/b2/ae/50b2ae20f52658a9ba497982461701ff.jpg",
+  "https://i.pinimg.com/1200x/ef/f6/50/eff6501a62501448665e828f027a5702.jpg",
+  "https://i.pinimg.com/1200x/68/5a/4c/685a4c3f05a4ac047656d30beddfe294.jpg",
+  "https://i.pinimg.com/736x/4a/6a/cf/4a6acf052c53d39379460c0037c6652b.jpg",
+  "https://i.pinimg.com/736x/01/9e/e8/019ee86f2fcbead3ea8532aebf5536e7.jpg",
+  "https://i.pinimg.com/736x/32/d8/5c/32d85cd7a551c332c7ea742c361dd53e.jpg",
+  "https://i.pinimg.com/736x/6c/02/c4/6c02c42fe0330d2396e3a534d2b32d65.jpg"
 ];
 
 const STUDIO_FALLBACKS = [
@@ -2813,12 +2853,12 @@ function renderWorkStudio() {
   const framesHtml = STUDIO_FRAMES.map(
     (frame) => `
       <figure class="studio-frame ${frame.ratioClass}" data-category="${frame.category}" aria-label="${frame.tag} — ${frame.category}">
-        <span class="studio-index-tag">${frame.tag}</span>
         <img
           src="${frame.image}"
           alt="${frame.tag} — ${frame.category}"
           loading="lazy"
           decoding="async"
+          referrerpolicy="no-referrer"
           onerror="this.onerror=null;this.src='${frame.fallback}';"
         />
       </figure>
@@ -3005,21 +3045,41 @@ const academicCertificates = [
   { img: "", name: "Full-Stack Cloud Architecture", id: "—" },
   { img: "", name: "Google UX Design", id: "—" },
   { img: "", name: "Google AI Essentials", id: "—" },
-  { img: "", name: "Google Prompting Essentials", id: "—" },
+  { img: "https://i.pinimg.com/736x/79/c4/c3/79c4c318d792366e04b96584b1fc6993.jpg", name: "Google Prompting Essentials", id: "PCUWLD4DYBZS", verifyUrl: "https://coursera.org/verify/specialization/PCUWLD4DYBZS" },
   { img: "", name: "Career Essentials in Generative AI", id: "—" },
-  { img: "", name: "Introduction to Artificial Intelligence (2023)", id: "—" },
+  { img: "https://i.pinimg.com/736x/a8/fc/fc/a8fcfc870f715d7316556f82cbc963c5.jpg", name: "Introduction to Artificial Intelligence (2023)", id: "f2473c279cd6a677a815ecdbf37dc9e00fee0a78917589927ef982897eb87d3a" },
   { img: "", name: "Ethics in the Age of Generative AI", id: "—" },
   { img: "", name: "Streamlining Your Work with Microsoft Copilot", id: "—" },
   { img: "", name: "Generative AI: The Evolution of Thoughtful Online Search", id: "—" },
   { img: "", name: "Elements of AI", id: "—" },
   { img: "", name: "Full Stack Open", id: "—" },
   { img: "", name: "Java Programming", id: "—" },
-  { img: "", name: "Ethics of AI", id: "—" },
-  { img: "", name: "Web Development Fundamentals", id: "—" },
+  { img: "https://i.pinimg.com/736x/c4/8a/d9/c48ad9b011694614b5bed4f07ba584bd.jpg", name: "Ethics of AI", id: "ce32f8qsalb", verifyUrl: "https://certificates.mooc.fi/validate/ce32f8qsalb" },
+  { img: "https://i.pinimg.com/736x/83/b5/20/83b5206de76152ec00df2d6ae142aacc.jpg", name: "Web Development Fundamentals", id: "e9d8bee1-bd00-4cae-be96-68d7e6772d72", verifyUrl: "https://www.credly.com/badges/e9d8bee1-bd00-4cae-be96-68d7e6772d72" },
   { img: "", name: "Penetration Testing and Ethical Hacking", id: "—" },
   { img: "", name: "CompTIA IT Fundamentals", id: "—" },
-  { img: "", name: "A2Z Of Finance: Finance Beginner Course", id: "—" },
-  { img: "", name: "Stock Markets Made Easy", id: "—" }
+  { img: "https://i.pinimg.com/736x/c8/c3/d6/c8c3d661100fbd7200cd73ae001a27bf.jpg", name: "A2Z Of Finance: Finance Beginner Course", id: "ELM-181008", verifyUrl: "https://www.elearnmarkets.com/verify-certificate" },
+  { img: "https://i.pinimg.com/736x/f8/e6/27/f8e62703f6fd67d582216ed6069f2b09.jpg", name: "Stock Markets Made Easy", id: "ELM-180950", verifyUrl: "https://www.elearnmarkets.com/verify-certificate" },
+  { img: "https://i.pinimg.com/736x/a3/56/ee/a356ee64e6d17fe14a7067ca6cb41756.jpg", name: "Hacktoberfest 26 — Hacktoberfest Hack Day Indore x PyData Indore", id: "—" },
+  { img: "https://i.pinimg.com/736x/27/09/96/27099691f52bbddbb87631b0e9ad232c.jpg", name: "AI Day Indore — Nerds Room", id: "—" },
+  { img: "https://i.pinimg.com/736x/57/48/b3/5748b3690e3f6ce70a8bf1d3a5903e8b.jpg", name: "AI Builders Lab (Bootcamp) — Google for Developers & Hack2skill", id: "2024H2S10AIBL-P200195" },
+  { img: "https://i.pinimg.com/736x/ac/d3/c8/acd3c841dc496368e462476c5ee09a3e.jpg", name: "Make Agentic AI Work for You — IBM SkillsBuild", id: "czsJfPK8", verifyUrl: "https://www.credly.com/go/czsJfPK8" },
+  { img: "https://i.pinimg.com/736x/9d/67/e4/9d67e468ab93264a31a42d45795ecf3a.jpg", name: "Foundations of Prompt Engineering — AWS Training & Certification", id: "—" },
+  { img: "https://i.pinimg.com/736x/a4/ac/19/a4ac19ceeeebca0f9cbffcd1a44d6c50.jpg", name: "Data Science & Analytics — HP LIFE / HP Foundation", id: "539c4bf4-12b0-42ed-8071-39ffabb69d87" },
+  { img: "https://i.pinimg.com/736x/bb/c9/48/bbc948f6c7da63295b20f425000bb8b1.jpg", name: "IT for Business Success — HP LIFE / HP Foundation", id: "0ff717f1-f901-4977-95ee-50ffeb1287ae" },
+  { img: "https://i.pinimg.com/736x/d5/95/a8/d595a8bbe9118c1695c81aa524c9c15f.jpg", name: "Effective Leadership — HP LIFE / HP Foundation", id: "fd3f4f92-be91-4d13-8845-aca4f4a9e6ed" },
+  { img: "https://i.pinimg.com/736x/db/31/67/db316741cf8ad0b94477b7e4e9f10c25.jpg", name: "AI for Business Professionals — HP LIFE / HP Foundation", id: "4ad2983e-fd1d-41f6-aeee-5dc0442fc5c4" },
+  { img: "https://i.pinimg.com/736x/80/4d/7a/804d7a9b5b97dffe87804b55dabca09f.jpg", name: "Master Data Management for Beginners — TCS iON", id: "71279-26017086-1016" }
+];
+
+const additionalAcademicCertificates = [
+  { img: "https://i.pinimg.com/736x/34/36/22/34362206f2d68dbc9277cb14994277ce.jpg", name: "How to Get into Blockchain", id: "hzaj92r", verifyUrl: "https://www.futurelearn.com/certificates/hzaj92r" },
+  { img: "https://i.pinimg.com/736x/7a/b0/e6/7ab0e6a1abcd1fd88446fdf07ec15f1d.jpg", name: "An Introduction to Programming Using Python", id: "7w5qdoc", verifyUrl: "https://www.futurelearn.com/certificates/7w5qdoc" },
+  { img: "https://i.pinimg.com/736x/9b/8a/e9/9b8ae941ce93a97432d5ab952d4f4049.jpg", name: "Digital Skills: Artificial Intelligence", id: "9mb16zb", verifyUrl: "https://www.futurelearn.com/certificates/9mb16zb" },
+  { img: "https://i.pinimg.com/736x/ad/56/cd/ad56cd922bc5b2d345e8a17113b45967.jpg", name: "Digital Skills: Web Analytics", id: "6m48id0", verifyUrl: "https://www.futurelearn.com/certificates/6m48id0" },
+  { img: "https://i.pinimg.com/736x/1c/7c/a4/1c7ca4cfbcad73f0fa1c7610eb6eda37.jpg", name: "Introduction to Virtual, Augmented and Mixed Reality", id: "oat5w5b", verifyUrl: "https://www.futurelearn.com/certificates/oat5w5b" },
+  { img: "https://i.pinimg.com/736x/ea/0f/5d/ea0f5d47439190500c4c3c186e684d32.jpg", name: "Digital Skills: Digital Marketing", id: "tfp1x86", verifyUrl: "https://www.futurelearn.com/certificates/tfp1x86" },
+  { img: "https://i.pinimg.com/736x/20/64/fa/2064fabb8771c971bd5a72d329241c56.jpg", name: "Introduction to Physical Computing", id: "8qe40qt", verifyUrl: "https://www.futurelearn.com/certificates/8qe40qt" }
 ];
 
 const instituteCertificates = [
@@ -3156,19 +3216,22 @@ function getBadgeIconSvg(category) {
   }
 }
 
-function renderCertificateCardsHtml(items) {
+function renderCertificateCardsHtml(items, isPortrait = false) {
   return items.map((cert) => `
-    <article class="cert-card" tabindex="0" role="region" aria-label="${cert.name}">
-      <div class="cert-frame">
+    <article class="cert-card" tabindex="0" role="region" aria-label="${cert.name}"${cert.verifyUrl ? ` data-verify-url="${cert.verifyUrl}"` : ''}>
+      <div class="cert-frame${isPortrait ? ' is-portrait' : ''}">
         <span class="cert-plus-mark" aria-hidden="true">+</span>
         <img
           ${hasValidCertImageSrc(cert.img) ? `src="${cert.img}"` : ''}
           data-cert-slot="true"
           alt="${hasValidCertImageSrc(cert.img) ? cert.name : ''}"
+          loading="eager"
+          decoding="sync"
+          referrerpolicy="no-referrer"
           style="
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: ${isPortrait ? 'contain' : 'cover'};
             display: none;
           "
         />
@@ -3183,7 +3246,9 @@ function renderCertificateCardsHtml(items) {
 }
 
 function renderCredentials() {
-  const academicCardsHtml = renderCertificateCardsHtml(academicCertificates);
+  const academicCardsHtml =
+    renderCertificateCardsHtml(academicCertificates) +
+    renderCertificateCardsHtml(additionalAcademicCertificates, true);
   const instituteCardsHtml = renderCertificateCardsHtml(instituteCertificates);
   const hackathonCardsHtml = renderCertificateCardsHtml(hackathonCertificates);
 
@@ -3223,10 +3288,10 @@ function renderCredentials() {
         <p class="credentials-hero-subtitle">Industry validations, hackathon achievements, and technical badges.</p>
       </header>
 
-      <!-- Section A: Academic & Industry Certifications (21 Frames) -->
+      <!-- Section A: Academic & Industry Certifications (38 Frames) -->
       <section id="edu-certs" class="cert-section" aria-label="Academic and Industry Certifications">
         <div class="cert-section-header">
-          <div class="sec-label">[ 04.1 / ACADEMIC &amp; INDUSTRY CERTIFICATIONS — 21 ]</div>
+          <div class="sec-label">[ 04.1 / ACADEMIC &amp; INDUSTRY CERTIFICATIONS — 38 ]</div>
         </div>
         <div class="cert-grid" id="cert-grid-academic">
           ${academicCardsHtml}
@@ -3285,14 +3350,14 @@ function renderAbout() {
           />
         </div>
         <div class="about-bio">
-          <span class="founder-eyebrow">[ FOUNDER // AIVERSEUI ]</span>
-          <h1 class="founder-headline">I AM THE FOUNDER OF AIVERSEUI</h1>
-          <div class="founder-tagline">AIVERSEUI — Design. Build. Open Source. // Where Design Meets Technology.</div>
+          <span class="founder-eyebrow">[ FOUNDER // <span class="brand-ai-red">AI</span>VERSEUI ]</span>
+          <h1 class="founder-headline">I AM THE FOUNDER OF <span class="brand-ai-red">AI</span>VERSEUI</h1>
+          <div class="founder-tagline"><span class="brand-ai-red">AI</span>VERSEUI — Design. Build. Open Source. // Where Design Meets Technology.</div>
           <div class="founder-narrative">
             <div>
               <span class="founder-block-tag">[ STUDIO OVERVIEW ]</span>
               <p>
-                <strong>AIVERSEUI</strong> is an independent design and technology studio bridging UI/UX design, frontend engineering, creative technology, and open-source innovation. We transform raw ideas into functional, engaging websites, interactive landing pages, web applications, dashboards, and expressive digital interfaces.
+                <strong><span class="brand-ai-red">AI</span>VERSEUI</strong> is an independent design and technology studio bridging UI/UX design, frontend engineering, creative technology, and open-source innovation. We transform raw ideas into functional, engaging websites, interactive landing pages, web applications, dashboards, and expressive digital interfaces.
               </p>
             </div>
             <div>
@@ -3307,7 +3372,7 @@ function renderAbout() {
 
       <!-- AIVERSEUI Studio Pillars: What We Do -->
       <section id="aiverseui-pillars" class="aiverseui-sec" aria-label="AIVERSEUI What We Do">
-        <div class="sec-label">[ AIVERSEUI / WHAT WE DO ]</div>
+        <div class="sec-label">[ <span class="brand-ai-red">AI</span>VERSEUI / WHAT WE DO ]</div>
         <div class="pillars-grid">
           <article class="pillar-cell">
             <div>
@@ -3397,7 +3462,7 @@ function renderAbout() {
           </div>
         </div>
         <p class="approach-statement">
-          Every project at AIVERSEUI follows a disciplined six-stage pipeline—pairing research clarity and intentional interface design with modular engineering, tactile validation, and durable open-web delivery.
+          Every project at <span class="brand-ai-red">AI</span>VERSEUI follows a disciplined six-stage pipeline—pairing research clarity and intentional interface design with modular engineering, tactile validation, and durable open-web delivery.
         </p>
       </section>
 
@@ -3482,7 +3547,7 @@ function renderAbout() {
           <div class="timeline-item item-right">
             <div class="timeline-node" aria-hidden="true"></div>
             <div class="timeline-year">2026 / COMMUNITY LEADERSHIP</div>
-            <h2 class="timeline-title">Primary Organizer, AIVERSEUI &amp; Hack The Festive Christmas</h2>
+            <h2 class="timeline-title">Primary Organizer, <span class="brand-ai-red">AI</span>VERSEUI &amp; Hack The Festive Christmas</h2>
             <p class="timeline-desc">
               Led a 40+ member tech community in Indore, directing high-octane engineering sprints, hackathons, and creative design jams.
             </p>
